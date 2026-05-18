@@ -113,7 +113,7 @@ function FlowerArticle() {
             <span className="text-gradient-aurora">FIELD NOTES</span>
           </h2>
           <ul className="mt-4 space-y-3">
-            {f.facts.map((fact) => (
+            {f.facts.map((fact: string) => (
               <li
                 key={fact}
                 className="flex gap-3 text-foreground/85"
