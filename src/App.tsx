@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AuroraBackground } from "@/components/AuroraBackground";
@@ -29,18 +29,16 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           {sections.map((s) => (
-            <>
+            <Fragment key={s.slug}>
               <Route
-                key={s.slug}
                 path={`/${s.slug}`}
                 element={<SectionIndex section={s} />}
               />
               <Route
-                key={`${s.slug}-post`}
                 path={`/${s.slug}/:postSlug`}
                 element={<SectionPost section={s} />}
               />
-            </>
+            </Fragment>
           ))}
           <Route path="*" element={<NotFound />} />
         </Routes>
