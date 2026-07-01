@@ -1,14 +1,13 @@
-import { Link } from "@tanstack/react-router";
+import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { sections } from "@/lib/content";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/blog", label: "Flower Blog" },
-  { to: "/literacy", label: "Nature Literacy" },
-  { to: "/about", label: "About" },
-] as const;
+  { to: "/", label: "Home", end: true },
+  ...sections.map((s) => ({ to: `/${s.slug}`, label: s.label, end: false })),
+  { to: "/about", label: "About", end: false },
+];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -26,13 +25,19 @@ export function Navbar() {
         <ul className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <li key={l.to}>
-              <Link
+              <NavLink
                 to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
-                className="rounded-full px-4 py-2 text-sm text-foreground/80 transition-colors hover:bg-white/10 hover:text-foreground data-[status=active]:bg-white/15 data-[status=active]:text-foreground"
+                end={l.end}
+                className={({ isActive }) =>
+                  `rounded-full px-4 py-2 text-sm transition-colors hover:bg-white/10 hover:text-foreground ${
+                    isActive
+                      ? "bg-white/15 text-foreground"
+                      : "text-foreground/80"
+                  }`
+                }
               >
                 {l.label}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -51,14 +56,20 @@ export function Navbar() {
           <ul className="flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.to}>
-                <Link
+                <NavLink
                   to={l.to}
-                  activeOptions={{ exact: l.to === "/" }}
+                  end={l.end}
                   onClick={() => setOpen(false)}
-                  className="block rounded-2xl px-4 py-3 text-sm text-foreground/80 hover:bg-white/10 data-[status=active]:bg-white/15 data-[status=active]:text-foreground"
+                  className={({ isActive }) =>
+                    `block rounded-2xl px-4 py-3 text-sm hover:bg-white/10 ${
+                      isActive
+                        ? "bg-white/15 text-foreground"
+                        : "text-foreground/80"
+                    }`
+                  }
                 >
                   {l.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>

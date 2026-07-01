@@ -1,32 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowRight, Camera, Flower2, Sprout } from "lucide-react";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Nature's Symphony — Home" },
-      {
-        name: "description",
-        content:
-          "A love letter to wild places. Forests, oceans, deserts, waterfalls — and the stories behind the flowers.",
-      },
-      { property: "og:title", content: "Nature's Symphony" },
-      {
-        property: "og:description",
-        content:
-          "A vibrant nature gallery and flower blog for forest & nature lovers.",
-      },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: Home,
-});
-
 const featured = [
   {
-    to: "/gallery" as const,
+    to: "/gallery",
     icon: Camera,
     eyebrow: "Gallery",
     title: "Wild places",
@@ -34,7 +12,7 @@ const featured = [
     accent: "var(--accent-teal)",
   },
   {
-    to: "/blog" as const,
+    to: "/blog",
     icon: Flower2,
     eyebrow: "Flower Blog",
     title: "Stories of petals",
@@ -42,7 +20,7 @@ const featured = [
     accent: "var(--accent-violet)",
   },
   {
-    to: "/literacy" as const,
+    to: "/literacy",
     icon: Sprout,
     eyebrow: "Nature Literacy",
     title: "Learn the wild",
@@ -51,10 +29,9 @@ const featured = [
   },
 ];
 
-function Home() {
+export default function Home() {
   return (
     <>
-      {/* HERO */}
       <section className="relative px-4 pb-24 pt-12">
         <div className="mx-auto max-w-6xl">
           <motion.div
@@ -99,7 +76,6 @@ function Home() {
               </div>
             </div>
 
-            {/* Decorative image edge */}
             <div className="pointer-events-none absolute -right-20 -top-10 hidden h-[120%] w-[55%] md:block">
               <div
                 className="absolute inset-0 opacity-60"
@@ -119,7 +95,6 @@ function Home() {
         </div>
       </section>
 
-      {/* FEATURED TRIO */}
       <section className="px-4 py-12">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 flex items-end justify-between gap-4">
@@ -172,7 +147,6 @@ function Home() {
         </div>
       </section>
 
-      {/* QUOTE */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-4xl text-center">
           <motion.blockquote

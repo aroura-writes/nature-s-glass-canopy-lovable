@@ -1,26 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Nature's Symphony" },
-      {
-        name: "description",
-        content:
-          "Nature's Symphony is a love letter to wild places — built for forest lovers, photographers, and the merely curious.",
-      },
-      { property: "og:title", content: "About — Nature's Symphony" },
-      {
-        property: "og:description",
-        content: "A love letter to wild places.",
-      },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
-  component: About,
-});
 
 const values = [
   {
@@ -40,7 +19,7 @@ const values = [
   },
 ];
 
-function About() {
+export default function About() {
   return (
     <section className="px-4 py-12">
       <div className="mx-auto max-w-4xl">
@@ -63,10 +42,11 @@ function About() {
             a single absurd flower and felt grateful.
           </p>
           <p className="mt-4 max-w-2xl text-foreground/75">
-            We collect imagery from across the world&apos;s biomes, write
-            stories about the flowers our cultures have loved for centuries,
-            and quietly teach the science of how it all hangs together. No
-            advertising. No tracking. Just a place to come back to.
+            All content is written in plain markdown files kept in this
+            project&apos;s Git repository. Adding a new post is as simple as
+            dropping a new <code className="rounded bg-white/10 px-1.5 py-0.5 text-xs">.md</code>{" "}
+            file into the matching folder and pushing — the site rebuilds and
+            the post appears.
           </p>
         </motion.header>
 

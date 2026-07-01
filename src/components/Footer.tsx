@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { sections } from "@/lib/content";
 
 export function Footer() {
   return (
@@ -15,9 +16,11 @@ export function Footer() {
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-foreground/70">
             <Link to="/" className="hover:text-foreground">Home</Link>
-            <Link to="/gallery" className="hover:text-foreground">Gallery</Link>
-            <Link to="/blog" className="hover:text-foreground">Flower Blog</Link>
-            <Link to="/literacy" className="hover:text-foreground">Nature Literacy</Link>
+            {sections.map((s) => (
+              <Link key={s.slug} to={`/${s.slug}`} className="hover:text-foreground">
+                {s.label}
+              </Link>
+            ))}
             <Link to="/about" className="hover:text-foreground">About</Link>
           </nav>
         </div>
