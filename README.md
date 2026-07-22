@@ -8,30 +8,95 @@ Built with **Vite + React + TypeScript**, styled with **Tailwind v4**, animated 
 
 ## ✍️ Add a new post (the whole workflow)
 
-1. Pick a section folder inside [`content/`](./content):
-   - `content/gallery/` — photo posts
-   - `content/blog/` — flower stories
-   - `content/literacy/` — nature-literacy essays
-2. Create a new file, e.g. `content/blog/my-new-flower.md`.
-3. Fill in the front matter and body:
+Every nav-bar page is powered by the markdown files inside a matching folder under [`content/`](./content). Adding a post is just creating a new `.md` file in the right folder.
 
-   ```markdown
-   ---
-   title: My New Flower
-   date: 2026-07-01
-   cover: https://example.com/photo.jpg
-   excerpt: A one-line teaser shown on the list page.
-   ---
+| Nav bar | Folder | What goes here |
+| ------- | ------ | -------------- |
+| **Gallery** | `content/gallery/` | Photo posts — one image + short story per file. |
+| **Flower Blog** | `content/blog/` | Flower articles — history, symbolism, habitat, field notes. |
+| **Nature Literacy** | `content/literacy/` | Educational essays — ecosystems, biodiversity, climate, conservation. |
 
-   Write the article body in normal **Markdown**.
+### 1. Add a new Gallery post
 
-   ## Subheading
+Create `content/gallery/my-forest-spot.md`:
 
-   - Bullet lists work
-   - _Italics_, **bold**, [links](https://example.com), images, blockquotes, tables — all supported (GFM).
-   ```
+```markdown
+---
+title: Morning fog in the redwoods
+date: 2026-07-22
+cover: https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=80
+excerpt: Fog rolls through thousand-year trunks along the northern California coast.
+---
 
-4. Commit and push. GitHub Actions rebuilds the site and the post appears automatically.
+The redwood canopy behaves like a second sky. On damp mornings the fog condenses on needles two hundred feet above the forest floor and drips down for hours.
+
+## Where to see it
+
+- **Redwood National Park**, California
+- **Muir Woods**, just north of San Francisco
+```
+
+Push the file. It will appear on the **Gallery** page at `/#/gallery/morning-fog-in-the-redwoods`.
+
+### 2. Add a new Flower Blog post
+
+Create `content/blog/my-flower.md`:
+
+```markdown
+---
+title: Cherry Blossom
+date: 2026-07-22
+cover: https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1600&q=80
+excerpt: A fleeting pink storm that has shaped poetry and philosophy.
+---
+
+## History
+
+Sakura have been cultivated in Japan for more than a thousand years.
+
+## Symbolism
+
+In Japan they embody *mono no aware* — the bittersweet awareness of transience.
+
+## Habitat
+
+Native to the temperate forests of Japan, Korea, and parts of China.
+
+## Field notes
+
+- Peak bloom lasts only about a week.
+```
+
+Push the file. It will appear on the **Flower Blog** page at `/#/blog/cherry-blossom`.
+
+### 3. Add a new Nature Literacy post
+
+Create `content/literacy/my-topic.md`:
+
+```markdown
+---
+title: Variety is resilience
+date: 2026-07-22
+cover: https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=1600&q=80
+excerpt: Biodiversity is the planet's insurance policy.
+---
+
+The more variants a system holds — of genes, species, and habitats — the better it survives shocks.
+
+## Why it matters
+
+- Tropical rainforests cover 6% of Earth's land surface yet shelter more than half of all terrestrial species.
+- Coral reefs cover less than 0.1% of the ocean and host a quarter of all marine life.
+```
+
+Push the file. It will appear on the **Nature Literacy** page at `/#/literacy/variety-is-resilience`.
+
+### Important rules
+
+- The **file name becomes the URL**. Use lowercase letters, numbers, and hyphens only. Example: `my-new-post.md` → URL `/#/blog/my-new-post`.
+- The **folder name decides which nav bar** the post appears under. Put gallery posts in `content/gallery/`, blog posts in `content/blog/`, and literacy posts in `content/literacy/`.
+- Posts are sorted by `date` (newest first). Use `YYYY-MM-DD` format.
+- After you push, GitHub Actions rebuilds the site and the new post appears automatically.
 
 **Front-matter fields** (all optional except `title`):
 
