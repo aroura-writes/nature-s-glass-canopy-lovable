@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { getPost, type Section } from "@/lib/content";
 import NotFound from "@/pages/NotFound";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { useEffect } from "react";
 
 export function SectionPost({ section }: { section: Section }) {
@@ -74,6 +75,7 @@ export function SectionPost({ section }: { section: Section }) {
           </ReactMarkdown>
         </div>
       </div>
+      <ScrollToTop />
     </article>
   );
 }
