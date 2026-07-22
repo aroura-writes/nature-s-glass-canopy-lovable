@@ -3,11 +3,10 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-// Base path is "./" so the built site works whether it's hosted at
-// https://<user>.github.io/<repo>/ or at the root of a custom domain.
-// HashRouter is used in the app so no SPA fallback is needed on GitHub Pages.
+// Base path "/" — Vercel serves from the domain root. A `vercel.json`
+// rewrite sends all unknown paths to index.html so client-side routing works.
 export default defineConfig({
-  base: "./",
+  base: "/",
   plugins: [react(), tailwindcss(), tsconfigPaths()],
   server: {
     host: "::",
